@@ -41,8 +41,8 @@
                             </button>
                         </div>
                         <div class="bnt-header-log">
-                            <button class="bnt-header-login">
-                                Login
+                            <button class="bnt-header-login" onclick="window.location.href='cadastro.php'">
+                                Cadastro
                             </button>
                         </div>
                         <div class="bx bx-menu" id="menu-icon"></div>
