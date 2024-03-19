@@ -2,8 +2,8 @@
 
 if(isset($_POST['submit']))
 {
-    include('../DB/DB.php');
-    include('../DB/UserDB.php');
+    include('./DB/DB.php');
+    include('./DB/UserDB.php');
 
     $cad = new UserDB();
 
@@ -20,28 +20,27 @@ if(isset($_POST['submit']))
         header('location: cadastro.php?sucess');
     }
 }
-?>
+?> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="icon" href="../images/logo.webp">
-    <link rel="stylesheet" href="../styles_pages/form.css">
+    <title>Ong Lar Bastet</title>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
     <?php
     if(isset($_GET['success'])) {
         echo  "<script>alert('cadastrado com sucesso')</script>";
         }
-    ?>
+    ?> 
 <div class="tot">
     <form class="tot-form" action="" method="post">
         <div class="tot-form-est">
             <div class="tot-form-est-top">
                 <div class="tot-form-est-top-img">
-                    <img  src="../images/logo.webp" alt="">
+                    <img  src="../images/logo-form.png" alt="">
                 </div>
                 <h2 class="tot-form-est-top-h2">Formulário de Cadastro</h2>
             </div>
