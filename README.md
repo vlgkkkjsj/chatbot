@@ -12,7 +12,8 @@
   <div align="center">
 
 [![php](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white&style=for-the-badge)<space><space>
-[![Coverage Status](https://img.shields.io/coveralls/github/vlgkkkjaj/chatbot?color=8257E5&style=for-the-badge)](https://coveralls.io/github/chatbot/chatbot?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/vlgkkkjsj/chatbot/badge.svg)](https://coveralls.io/github/vlgkkkjsj/chatbot)
+
 
 </div>
 
