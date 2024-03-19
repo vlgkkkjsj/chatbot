@@ -100,7 +100,7 @@ class UserDB
             $sql = "INSERT INTO cadastro_clientes (nome,user,email,cpf,cartao) VALUES ('{$nome}','{$user}','{$email}','{$cpf}', '{$cartao}')";
 
             $res =  mysqli_query($this->conexao->getConn(),$sql);
-
+             
             if (mysqli_affected_rows($this->conexao->getConn())> 0)
             {
                 return true;
