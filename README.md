@@ -16,7 +16,7 @@
   ## Overview
 
    Chatbot is an application for creating automated bots. You can control your bots the way you want, wherever you want, at an affordable price and with guaranteed quality.
-   - **[![Getting Started]](Link)**
+   - **[Getting Started](Link)**
       -**[Installation](link)** 
 
    Want to test chatBot before using it?
