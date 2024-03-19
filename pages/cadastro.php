@@ -22,21 +22,21 @@ if(isset($_POST['submit']))
         header('location: cadastro.php?sucess');
     }
 }
-?> 
+?>   
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ong Lar Bastet</title>
-    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="../styles_pages/form.css">
 </head>
 <body>
-    <?php
-    if(isset($_GET['success'])) {
-        echo  "<script>alert('cadastrado com sucesso')</script>";
-        }
-    ?> 
+<?php
+if(isset($_GET['success'])) {
+    echo  "<script>alert('cadastrado com sucesso')</script>";
+    }
+?>   
 <div class="tot">
     <form class="tot-form" action="" method="post">
         <div class="tot-form-est">

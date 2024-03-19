@@ -98,6 +98,7 @@ input[type="submit"]:hover {
         color: #eee;
         border-radius: 12px;
         transform: background 500ms ease;
+        border: 0;
 }
 .botão:hover{
     cursor: pointer;
