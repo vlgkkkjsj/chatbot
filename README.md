@@ -3,12 +3,12 @@
         <img src="./images/logo.webp" alt="logo_application">     
    </a>            
    </p>
-    <p align="center"> The Easiest Tool for Creating No-Code Chatbots in Brazil 🤖
-    
-  </p>
+   
+<p align="center"> The Easiest Tool for Creating No-Code Chatbots in Brazil 🤖 </p>
+
   <div align="center">
 
-[![php](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white&style=for-the-badge)<space><space>
+![php](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white&style=for-the-badge) <space><space>
 [![Coverage Status](https://img.shields.io/coveralls/github/vlgkkkjaj/chatbot?color=8257E5&style=for-the-badge)](https://coveralls.io/github/chatbot/chatbot?branch=develop)
 
 </div>
