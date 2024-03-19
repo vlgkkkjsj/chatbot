@@ -44,6 +44,9 @@
                             <button class="bnt-header-login" onclick="window.location.href='./pages/cadastro.php'">
                                 Cadastro
                             </button>
+                            <button class="bnt-header-login" onclick="window.location.href='./pages/login.php'">
+                                login
+                            </button>
                         </div>
                         <div class="bx bx-menu" id="menu-icon"></div>
                         <div class="bx bx-menu" id="menu-icon"></div>

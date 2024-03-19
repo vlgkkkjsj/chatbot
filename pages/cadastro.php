@@ -12,8 +12,10 @@ if(isset($_POST['submit']))
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $cpf = filter_var(trim($_POST['cpf']), FILTER_SANITIZE_NUMBER_INT);
     $cartao = filter_var(trim($_POST['cartao']), FILTER_SANITIZE_NUMBER_INT);
+    $senha = filter_var(trim($_POST['senha']), FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $insert = $cad -> submitUser($nome,$user,$email,$cpf,$cartao);
+
+    $insert = $cad -> submitUser($nome,$user,$email,$cpf,$cartao,$senha);
     
     if($insert == true)
     {
@@ -59,6 +61,9 @@ if(isset($_POST['submit']))
 
                 <label class="label" for="cpf">CPF:</label>
                 <input type="text" id="cpf" name="cpf" required>
+                
+                <label class="label" for="senha">Senha:</label>
+                <input type="text" id="senha" name="senha" required>
                 
                 <label class="label" for="cartao">Número do Cartão:</label>
                 <input type="text" id="cartao" name="cartao" required>
