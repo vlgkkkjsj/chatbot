@@ -27,7 +27,7 @@
 
 ## Need help?
 
-We’re using [GitHub Discussions](https://github.com/unform/unform/discussions) to create conversations around ChatBots. It is a place for our community to connect with each other around ideas, questions, issues, and suggestions.
+We’re using [GitHub Discussions](https://github.com/vlgkkjsj/chatBot/discussions) to create conversations around ChatBots. It is a place for our community to connect with each other around ideas, questions, issues, and suggestions.
 
 ## Contributing
 
