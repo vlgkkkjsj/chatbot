@@ -4,7 +4,7 @@ class Conexao
     private $host = "localhost";
         private $user = "root";
         private $pass = "";
-        private $base  = "dbcad";
+        private $base  = "DbData";
         private $conn;
 
     public function __construct()
