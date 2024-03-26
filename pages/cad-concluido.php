@@ -19,7 +19,7 @@
                 <form>
                     <div class="login-container-est-int-bnt">
                         <a href="login.php">
-                            <button class="botão" type="submit" name="submit" >voltar para o Login</button>
+                            <button class="botão" type="submit" name="submit" onclick="window.location.href='login.php'" >voltar para o Login</button>
                         </a>
                     </div>
                 </form>

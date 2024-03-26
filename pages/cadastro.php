@@ -2,8 +2,8 @@
 
 if(isset($_POST['submit']))
 {
-    include('./DB/DB.php');
-    include('./DB/UserDB.php');
+    include_once('../DB/DB.php');
+    include_once('../DB/UserDB.php');
 
     $cad = new UserDB();
 
@@ -14,27 +14,37 @@ if(isset($_POST['submit']))
     $card = filter_var(trim($_POST['card']), FILTER_SANITIZE_NUMBER_INT);
     $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_NUMBER_INT);
 
+    $sigle = $cad -> sUser($email,$cpf);
 
-    $insert = $cad -> submitUser($name,$user,$email,$cpf,$card,$password);
-    
-    if($insert == true)
+    if (!empty($single['cpf']) || !empty($single['email'])) 
     {
-        header('location: cadastro.php?sucess');
+        header('location: cadastro.php?repetido=senha');
     }
+    else
+    {
+        $insert = $cad -> submitUser($name,$user,$email,$cpf,$card,$password);
+    
+        if($insert == true)
+        {
+            header('location: cad-concluido.php');
+        }
+    
+    }   
 }
+   
 ?>   
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ong Lar Bastet</title>
+    <title>Black Conversa</title>
     <link rel="stylesheet" href="../styles_pages/form.css">
 </head>
 <body>
 <?php
-if(isset($_GET['success'])) {
-    echo  "<script>alert('cadastrado com sucesso')</script>";
+if(isset($_GET['repetido'])) {
+    echo  "<script>alert('cpf e/ou email ja existentes')</script>";
     }
 ?>   
 <div class="tot">

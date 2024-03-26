@@ -61,16 +61,14 @@ if(isset($_GET['erro']))
                     <button class="botão" type="submit" name="submit" >Entrar</button>
                 </div>
                 <div class="login-container-est-int-p">
-<<<<<<< HEAD
                     <a href="recup-senha.html">
                         <p>
                             Esqueceu a senha?
                         </p>
                     </a>
-=======
                     <a class="" href="recup-senha.php" >Esqueceu senha</a>
                     
->>>>>>> b39c87d59f6c808f2c3a564dde1472a71c2682ce
+
                 </div>
             </form>
         </div>

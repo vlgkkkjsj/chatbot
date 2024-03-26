@@ -67,15 +67,11 @@ if(isset($_POST['submit']))
                         <button class="botão" type="submit" name="submit" >Recuperar senha</button>
                     </div>
                     <div class="login-container-est-int-p">
-<<<<<<< HEAD:pages/recup-senha.html
                         <a href="login.php">
                             <p>
                                 Voltar para o Login
                             </p>
                         </a>
-=======
-                        <a href="login.php">Voltar ao login</a>
->>>>>>> b39c87d59f6c808f2c3a564dde1472a71c2682ce:pages/recup-senha.php
                     </div>
                 </form>
             </div>

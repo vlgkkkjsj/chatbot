@@ -73,12 +73,12 @@ class UserDB
     }
 
 
-    public function sUser($user,$email,$cpf) //S user é do mesmo de SINGLE USER, ou seja um usuario unico
+    public function sUser($email,$cpf) //S user é do mesmo de SINGLE USER, ou seja um usuario unico
     {
-        $single = "SELECT FROM  base_client  WHERE user=? AND email=? AND cpf = ? ";
+        $single = "SELECT FROM  base_client  WHERE email=? AND cpf = ? ";
 
         $stmt = mysqli_prepare($this->conexao->getConn(),$single);
-        mysqli_stmt_bind_param($stmt,"sss",$user,$email,$cpf);
+        mysqli_stmt_bind_param($stmt,"ss",$email,$cpf);
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
         
