@@ -189,7 +189,11 @@
                                     <p class="main-section-calc-bot-est-bot-p1">
                                         Quantas vendas você faz por dia?
                                     </p>
-                                    <span class="main-section-calc-bot-est-bot-c1">
+                                    <div class="slider" id="slider">
+                                    <div class="handle" id="handle"></div>
+                                    </div>
+                                    <input type="text" id="value" readonly>
+                                    <!-- <span class="main-section-calc-bot-est-bot-c1">
                                         <span class="main-section-calc-bot-est-bot-c1-line"></span>
                                         <span class="main-section-calc-bot-est-bot-c1-anim" style="width: 0%; height: 0%;"></span>
                                         <input data-index="0" aria-valuenow="0" aria-orientation="horizontal" aria-valuemax="1000" aria-valuemin="0" type="range" min="0" max="1000" step="1" value="0" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;">
@@ -198,7 +202,7 @@
                                                 <span class="main-section-calc-bot-est-bot-c1-anim-est-int"></span>
                                             </span>
                                         </span>
-                                    </span>
+                                    </span> -->
                                 </div>
 
                             </div>
