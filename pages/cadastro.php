@@ -7,15 +7,15 @@ if(isset($_POST['submit']))
 
     $cad = new UserDB();
 
-    $nome = filter_var(trim($_POST['nome']), FILTER_SANITIZE_SPECIAL_CHARS);
-    $user = filter_var(trim($_POST['user']), FILTER_SANITIZE_SPECIAL_CHARS);
+    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $user = filter_var(trim($_POST['user']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $cpf = filter_var(trim($_POST['cpf']), FILTER_SANITIZE_NUMBER_INT);
-    $cartao = filter_var(trim($_POST['cartao']), FILTER_SANITIZE_NUMBER_INT);
-    $senha = filter_var(trim($_POST['senha']), FILTER_SANITIZE_SPECIAL_CHARS);
+    $card = filter_var(trim($_POST['card']), FILTER_SANITIZE_NUMBER_INT);
+    $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_NUMBER_INT);
 
 
-    $insert = $cad -> submitUser($nome,$user,$email,$cpf,$cartao,$senha);
+    $insert = $cad -> submitUser($name,$user,$email,$cpf,$card,$password);
     
     if($insert == true)
     {
@@ -47,8 +47,8 @@ if(isset($_GET['success'])) {
                 <h2 class="tot-form-est-top-h2">Formulário de Cadastro</h2>
             </div>
             <div>
-                <label class="label" for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+                <label class="label" for="name">name:</label>
+                <input type="text" id="name" name="name" required>
 
                 <label class="label" for="user">user:</label>
                 <input type="text" id="user" name="user" required>
@@ -62,11 +62,11 @@ if(isset($_GET['success'])) {
                 <label class="label" for="cpf">CPF:</label>
                 <input type="text" id="cpf" name="cpf" required>
                 
-                <label class="label" for="senha">Senha:</label>
-                <input type="text" id="senha" name="senha" required>
+                <label class="label" for="password">password:</label>
+                <input type="text" id="password" name="password" required>
                 
-                <label class="label" for="cartao">Número do Cartão:</label>
-                <input type="text" id="cartao" name="cartao" required>
+                <label class="label" for="card">Número do Cartão:</label>
+                <input type="text" id="card" name="card" required>
             </div>
             <button class="botão" type="submit" name="submit" >Concluir</button>
         </div>

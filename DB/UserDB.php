@@ -4,12 +4,12 @@ class UserDB
 {
     private $conexao;
     private $id;
-    private $nome;
+    private $name;
     private $email;
-    private $cartao;
+    private $card;
     private $cpf;
     private $user;
-    private $senha;
+    private $password;
 
     public function __construct()
     {
@@ -19,9 +19,9 @@ class UserDB
     {
         return $this->id;
     }
-    public function getNome()
+    public function getName()
     {
-        return $this->nome;
+        return $this->name;
     }
     public function getEmail()
     {
@@ -31,13 +31,13 @@ class UserDB
     {
         return $this->cpf;
     }
-    public function getSenha()
+    public function getPassword()
     {
-        return $this->senha;
+        return $this->password;
     }
-    public function getCartão()
+    public function getCard()
     {
-        return $this->cartao;
+        return $this->card;
     }
     public function getUser()
     {
@@ -47,9 +47,9 @@ class UserDB
     {
         $this->id = $id;
     }
-    public function setNome($nome)
+    public function setName($name)
     {
-        $this->nome = $nome;
+        $this->name = $name;
     }
     public function setEmail($email)
     {
@@ -63,14 +63,19 @@ class UserDB
     {
         $this-> user = $user;
     }
-    public function setSenha($senha)
+    public function setPassword($password)
     {
-        $this-> senha = $senha;
+        $this-> password = $password;
     }
+    public function setCard($card)
+    {
+        $this -> card = $card;
+    }
+
 
     public function sUser($user,$email,$cpf) //S user é do mesmo de SINGLE USER, ou seja um usuario unico
     {
-        $single = "SELECT FROM  cadastro_clientes  WHERE user=? AND email=? AND cpf = ? ";
+        $single = "SELECT FROM  base_client  WHERE user=? AND email=? AND cpf = ? ";
 
         $stmt = mysqli_prepare($this->conexao->getConn(),$single);
         mysqli_stmt_bind_param($stmt,"sss",$user,$email,$cpf);
@@ -79,19 +84,19 @@ class UserDB
         
         return mysqli_fetch_assoc($res);
     }
-    public function submitUser($nome,$user,$email,$cpf,$cartao,$senha)
+    public function submitUser($name,$user,$email,$cpf,$card,$password)
     {
-        $nome = filter_var($nome, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $user = filter_var($user, FILTER_SANITIZE_SPECIAL_CHARS);
+        $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $cpf = filter_var($cpf, FILTER_SANITIZE_NUMBER_INT);
-        $cartao = filter_var($cartao, FILTER_SANITIZE_NUMBER_INT);
-        $senha = filter_var($senha, FILTER_SANITIZE_SPECIAL_CHARS);
+        $card = filter_var($card, FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
        
         
        
         
-        if(empty($nome)||empty($cpf)||empty($cartao)||empty($email)||empty($user)||empty($senha))
+        if(empty($name)||empty($cpf)||empty($card)||empty($email)||empty($user)||empty($password))
         {
             print "<script> alert('Certifique-se de que informou todas as informações')</script>";
             print "<script> location.href='cadastro.php'</script>";
@@ -101,14 +106,14 @@ class UserDB
             print "<script>alert('Certifique-se que cpf se encontra correto')</script>";
             print "<script> location.href='cadastro.php'</script>";
         }
-        else if (strlen($cartao)<13 || strlen($cartao)>19)
+        else if (strlen($card)<13 || strlen($card)>19)
         {
-            print "<script>alert('Certifique-se que cartao se encontra correto')</script>";
+            print "<script>alert('Certifique-se que card se encontra correto')</script>";
             print "<script> location.href='../pages/cadastro.php'</script>";
         }
         else
         {
-            $sql = "INSERT INTO cadastro_clientes (nome,user,email,cpf,cartao,senha) VALUES ('{$nome}','{$user}','{$email}','{$cpf}', '{$cartao}','{$senha}')";
+            $sql = "INSERT INTO base_client (name,user,email,cpf,card,password) VALUES ('{$name}','{$user}','{$email}','{$cpf}', '{$card}','{$password}')";
 
             $res =  mysqli_query($this->conexao->getConn(),$sql);
              
@@ -123,11 +128,11 @@ class UserDB
         }
 
     }
-    public function Login($user, $senha)
+    public function Login($user, $password)
     {
-        $result = "SELECT * FROM cadastro_clientes WHERE user= ? AND senha = ?";
+        $result = "SELECT * FROM base_client WHERE user= ? AND password = ?";
         $stmt = mysqli_prepare($this-> conexao ->getConn(), $result);
-        mysqli_stmt_bind_param($stmt, "ss", $user , $senha); 
+        mysqli_stmt_bind_param($stmt, "ss", $user , $password); 
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
 
@@ -140,4 +145,36 @@ class UserDB
             return false;
         }
 }
+        public function RedefinePassword($user, $password)
+        {
+            $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if(empty($password)||empty($user))
+            {
+                print "<script>alert('password ou usuario vazios')</script>";
+                print "<script>location.href='recup-password.php'</script>";
+            }
+            else if(strlen($password)<6) 
+            {
+                echo '<script>window.onload = function() {
+                    alert("password menor que 6");
+                }</script>';
+            }
+            else
+            {
+                $sql = "UPDATE base_client SET password = '{$password}' WHERE user ='{$user}'";
+                $res = mysqli_query($this->conexao->getConn(),$sql);
+
+                if(mysqli_affected_rows($this->conexao->getConn())>0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }
 }
