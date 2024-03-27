@@ -89,6 +89,7 @@ img{
     transform: background 500ms ease;
     box-shadow: #6627b6;    
     border: 0;
+    
 }
 .botão:hover{
     cursor: pointer;

@@ -75,7 +75,7 @@ class UserDB
 
     public function sUser($email,$cpf) //S user é do mesmo de SINGLE USER, ou seja um usuario unico
     {
-        $single = "SELECT FROM  base_client  WHERE email=? AND cpf = ? ";
+        $single = "SELECT * FROM  base_client  WHERE email= ? AND cpf = ? ";
 
         $stmt = mysqli_prepare($this->conexao->getConn(),$single);
         mysqli_stmt_bind_param($stmt,"ss",$email,$cpf);
@@ -89,12 +89,9 @@ class UserDB
         $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-        $cpf = filter_var($cpf, FILTER_SANITIZE_NUMBER_INT);
-        $card = filter_var($card, FILTER_SANITIZE_NUMBER_INT);
+        $cpf = filter_var($cpf, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $card = filter_var($card, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-       
-        
-       
         
         if(empty($name)||empty($cpf)||empty($card)||empty($email)||empty($user)||empty($password))
         {
@@ -150,10 +147,10 @@ class UserDB
             $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            if(empty($password)||empty($user))
+            if(empty($user)||empty($password))
             {
                 print "<script>alert('password ou usuario vazios')</script>";
-                print "<script>location.href='recup-password.php'</script>";
+                print "<script>location.href='recoveryPass.php'</script>";
             }
             else if(strlen($password)<6) 
             {

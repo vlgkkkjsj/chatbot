@@ -1,27 +1,27 @@
 <?php
 
-if(isset($_POST["submit"]))
+if(isset($_POST['submit']))
 {
     include('../DB/UserDB.php');
     include('../DB/DB.php');
 
-    $user = new UserDB();
+    $userLogin = new UserDB();
 
-    $user= filter_input(INPUT_POST,'user',FILTER_SANITIZE_SPECIAL_CHARS);
-    $senha = filter_input(INPUT_POST,'senha',FILTER_SANITIZE_SPECIAL_CHARS);
+    $user= filter_input(INPUT_POST,'user',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    $user= $user -> login($user,$senha);
+    $userLog= $userLogin->login($user,$password);
 
-    if($user == true)
+    if($userLog == true)
     {
         session_start();
         $_SESSION['user'] = $user;
-        $_SESSION['senha'] = $senha;
-        header('location:../page/');//terminar depois
+        $_SESSION['password'] = $password;
+        header('location:system.php');//terminar depois
     }
     else
     {
-        header('location: login.php?erro=senha');
+        header('location: login.php?erro');
 
     }
 }
@@ -39,9 +39,9 @@ if(isset($_POST["submit"]))
 
 if(isset($_GET['erro']))
 {
-    print "<script>alert('usuario e/ou senha incorretos')</script>";
+    print "<script>alert('usuario e/ou password incorretos')</script>";
 }
-?> -
+?>
 
 <div class="login-container">
     <div class="login-container-est">
@@ -52,23 +52,16 @@ if(isset($_GET['erro']))
                 </div>
                 <h2 class="login-container-est-h2">Login</h2>
             </div>
-            <form>
+            <form class="tot-form" action="" method="post">
                 <div class="login-container-est-int-input">
                     <input id="user" type="text" name="user" placeholder="user" required>
                     <input id="password" type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="login-container-est-int-bnt">
-                    <button class="botão" type="submit" name="submit" >Entrar</button>
+                    <button class="botão" type="submit" name="submit" id= "submit" >Entrar</button>
                 </div>
                 <div class="login-container-est-int-p">
-                    <a href="recup-senha.html">
-                        <p>
-                            Esqueceu a senha?
-                        </p>
-                    </a>
-                    <a class="" href="recup-senha.php" >Esqueceu senha</a>
-                    
-
+                    <a class="" href="recoveryPass.php" >Redefina sua senha</a>
                 </div>
             </form>
         </div>

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles_pages/cad-concluido.css">
 </head>
 <body>
-    <div class="login-container">
+<div class="login-container">
         <div class="login-container-est">
             <div class="login-container-est-int">
                 <div class="login-container-est-top">
@@ -27,3 +27,4 @@
         </div>
     </div>
 </body>
+</html>

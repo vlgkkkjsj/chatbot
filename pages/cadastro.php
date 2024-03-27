@@ -10,15 +10,15 @@ if(isset($_POST['submit']))
     $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $user = filter_var(trim($_POST['user']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-    $cpf = filter_var(trim($_POST['cpf']), FILTER_SANITIZE_NUMBER_INT);
-    $card = filter_var(trim($_POST['card']), FILTER_SANITIZE_NUMBER_INT);
-    $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_NUMBER_INT);
+    $cpf = filter_var(trim($_POST['cpf']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $card = filter_var(trim($_POST['card']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_var(trim($_POST['password']), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    $sigle = $cad -> sUser($email,$cpf);
+    $single = $cad -> sUser($email,$cpf);
 
-    if (!empty($single['cpf']) || !empty($single['email'])) 
+    if (!empty($single['email']) || !empty($single['cpf'])) 
     {
-        header('location: cadastro.php?repetido=senha');
+        header('location: cadastro.php?exist');
     }
     else
     {
@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
     
         if($insert == true)
         {
-            header('location: cad-concluido.php');
+            header('location: cadastro.php?sucess');
         }
     
     }   
@@ -42,10 +42,19 @@ if(isset($_POST['submit']))
     <link rel="stylesheet" href="../styles_pages/form.css">
 </head>
 <body>
+    
 <?php
-if(isset($_GET['repetido'])) {
-    echo  "<script>alert('cpf e/ou email ja existentes')</script>";
-    }
+
+if(isset($_GET['exist'])) 
+{
+    print  "<script>  alert('cpf e/ou email ja existentes')</script>";
+
+}
+ if (isset($_GET['sucess']))
+{
+    print "<script> alert('Formulario enviado com sucesso')</script>";
+    header('location: cad-concluido.php');
+}
 ?>   
 <div class="tot">
     <form class="tot-form" action="" method="post">

@@ -8,23 +8,17 @@ if(isset($_POST['submit']))
 
     $forget = new UserDB();
 
-    $password = filter_var($_POST['$password'],FILTER_SANITIZE_NUMBER_INT);
     $user = filter_var($_POST['user'],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_var($_POST['password'],FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if(strlen($password)<6)
-    {
-        header('location: recup_senha.php?menor=senha');
-    }
-    else
-    {
-        $forgotPass = $forget->RedefinePassword($password,$user);
+
+        $forgotPass = $forget->RedefinePassword($user, $password);
         if($forgotPass == true)
         {
-            header('location: recup_senha.php?sucess=cadastrado');
+            header('location: recoveryPass.php?sucess');
         }
     }
 
-}
 
 
 ?>
@@ -34,22 +28,21 @@ if(isset($_POST['submit']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Recuperacao de Senha - ChatBot</title>
     <link rel="stylesheet" href="../styles_pages/recup-senha.css">
+    <link rel="icon" href="">
 </head>
 <body>
 
     <?php
-      if(isset($_GET['success'])) {
-        echo"<script>alert('redefinido  com sucesso')</script>";
-        }
-        if(isset($_GET['menor']))
-        {
-          echo "<script>alert('a senha possui menos de 6 caracteres')</script>";
+      if(isset($_GET['sucess'])) {
+        echo '<script>window.onload = function() {
+            alert("Senha redefinida com sucesso");
+        }</script>';
         }
         
     ?>
-    <div class="login-container">
+   <div class="login-container">
         <div class="login-container-est">
             <div class="login-container-est-int">
                 <div class="login-container-est-top">
@@ -58,10 +51,12 @@ if(isset($_POST['submit']))
                     </div>
                     <h2 class="login-container-est-h2">Recuperar senha</h2>
                 </div>
-                <form>
+                <form action="" method="post">
                     <div class="login-container-est-int-input">
-                        <input id="user" type="text" name="user" placeholder="Nova senha" required>
-                        <input id="password" type="password" name="password" placeholder="Repita a nova senha" required>
+                        <input id="user" type="text" name="user" placeholder="user" required>
+                        <input id="password" type="password" name="password" placeholder="Nova senha" required>
+                        <input id="confirm-pass" type="password" name="confirm-pass" placeholder="Repita a nova senha" required>
+                       
                     </div>
                     <div class="login-container-est-int-bnt">
                         <button class="botão" type="submit" name="submit" >Recuperar senha</button>
